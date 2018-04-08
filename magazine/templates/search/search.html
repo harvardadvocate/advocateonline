@@ -22,13 +22,23 @@
     <li id="fiction" class="search-filter-tab" role="presentation"><a class="no-decoration" href="/search/fiction/?q={{ form.q.value }}">Fiction</a></li>
     <li id="features" class="search-filter-tab" role="presentation"><a class="no-decoration" href="/search/features/?q={{ form.q.value }}">Features</a></li>
     <li id="poetry" class="search-filter-tab" role="presentation"><a class="no-decoration" href="/search/poetry/?q={{ form.q.value }}">Poetry</a></li>
+    <li id="blog" class="search-filter-tab" role="presentation"><a class="no-decoration" href="/search/blog/?q={{ form.q.value }}">Blog</a></li>
   </ul>
 
   <h3 id="suggestions">Did you mean {{ suggestion }}?</h3>
   <dl>
     {% for result in page.object_list %}
       <dt>
-	<a href="{{ result.object.get_absolute_url }}">{{ result.object.title }}</a> - <a href="{{ result.object.contributors.all.first.get_absolute_url }}" class="author no-decoration">{{ result.object.contributors.all.first }}</a>
+	        <a href="{{ result.object.get_absolute_url }}">{{ result.object.title }}</a> -
+          {% if result.object.authors %}
+          <a href="{{ result.object.authors.all.first.get_absolute_url }}" class="author no-decoration">
+              {{ result.object.authors.all.first }}
+          </a>
+          {% else %}
+          <a href="{{ result.object.contributors.all.first.get_absolute_url }}" class="author no-decoration">
+              {{ result.object.contributors.all.first }}
+          </a>
+          {% endif %}
       </dt>
       <dd>
 	<p style="margin: 0.2cm 1cm 1cm 1cm; color:#808080"> {{ result.object.teaser | truncatechars:200 }} </p>

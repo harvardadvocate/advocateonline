@@ -171,7 +171,10 @@ class FilterSearchView(SearchView):
                 self.results = self.get_results()
 
                 if type_filter is not None:
-                        self.results = self.results.filter(section=type_filter)
+                        if type_filter == u"blog":
+                                self.results = self.results.models(Post)
+                        else:
+                                self.results = self.results.filter(section=type_filter)
                         self.type_filter = type_filter
                 else:
                         self.type_filter = 'all'

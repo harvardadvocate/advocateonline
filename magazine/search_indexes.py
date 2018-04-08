@@ -16,9 +16,21 @@ class ContentIndex(indexes.SearchIndex, indexes.Indexable):
 
     def prepare_section(self, obj):
         return obj.section.name
-        
+
     def get_model(self):
         return Content
 
     def index_queryset(self, using=None):
         return self.get_model().objects.all().select_related('section')
+
+class PostIndex(indexes.SearchIndex, indexes.Indexable):
+    title = indexes.CharField(model_attr='title')
+    section = indexes.CharField()
+    text = indexes.CharField(document=True, use_template=True)
+    suggestions = indexes.CharField()
+
+    def get_model(self):
+        return Post
+
+    def index_queryset(self, using=None):
+        return self.get_model().objects.all()
