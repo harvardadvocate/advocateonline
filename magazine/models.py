@@ -100,6 +100,7 @@ class Content(models.Model):
     slug = models.SlugField(max_length=100, unique=True)
     teaser = tinymce_models.HTMLField(blank=True)
     body = tinymce_models.HTMLField(blank=True)
+    suggested_ids = models.CharField(max_length=255, blank=True)
 
     # Legacy fields; we should probably get rid of this eventually
     medium = tinymce_models.HTMLField(blank=True)
