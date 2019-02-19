@@ -85,7 +85,7 @@ def homepage_redesign_jack(request):
   recent_blog = list(reversed(sorted(posts, key=lambda i: i.created)))[:2 ]
 
   # most_read (from Google Analytics)
-  most_read_list = get_analytics(top=5)
+  most_read_list = []
   most_read = []
   for item in most_read_list:
     article, _ = item

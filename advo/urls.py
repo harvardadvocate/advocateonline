@@ -20,10 +20,10 @@ class MediaRedirectView(RedirectView):
 
 urlpatterns = [
     # Examples:
-    url(r'^$', magazine.views.homepage_redesign_jack),
+    url(r'^$', magazine.views.homepage_redesign_jack, name="index"),
     url(r'^issues$', magazine.views.issues),
-    url(r'^about$', magazine.views.masthead),
-    url(r'^issue/(?P<season>[a-zA-Z]+)-(?P<year>[\d]{4})/$', magazine.views.singleissue),
+    url(r'^about$', magazine.views.masthead, name="about"),
+    url(r'^issue/(?P<season>[a-zA-Z]+)-(?P<year>[\d]{4})/$', magazine.views.singleissue, name='issue'),
     url(r'^subscribe$', payments.views.subscribe),
     url(r'^submit$', magazine.views.submit),
     url(r'^contact$', magazine.views.contact),
@@ -32,7 +32,7 @@ urlpatterns = [
     url(r'^advertise$', magazine.views.advertise),
     url(r'^adSubmit$', magazine.views.adSubmit),
     url(r'^150th$', magazine.views.onefifty),
-    url(r'^shop$', magazine.views.shop),
+    url(r'^shop$', magazine.views.shop, name='shop'),
     url(r'^shop/(?P<id>\d+)$', magazine.views.shopItemView),
     url(r'^cart$', magazine.views.cart),
     url(r'^shop-admin$', magazine.views.shop_admin),

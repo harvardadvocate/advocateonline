@@ -242,8 +242,8 @@ DATABASES = {
 # AWS S3 Stuff (for media and static files)
 AWS_STORAGE_BUCKET_NAME = 'advo-media'
 AWS_S3_REGION_NAME = 'us-east-1'  # e.g. us-east-2
-AWS_ACCESS_KEY_ID = os.getenv('AWS_ACCESS_KEY_ID', 'random_id')
-AWS_SECRET_ACCESS_KEY = os.getenv('AWS_SECRET_ACCESS_KEY', 'random secret')
+AWS_ACCESS_KEY_ID = os.getenv('MY_AWS_ACCESS_KEY_ID', 'random_id')
+AWS_SECRET_ACCESS_KEY = os.getenv('MY_AWS_SECRET_ACCESS_KEY', 'random secret')
 AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
 
 STATICFILES_LOCATION = 'static'

@@ -55,7 +55,6 @@ def get_analytics(top=10):
     end_date = datetime.datetime.now()
     start_date = end_date - datetime.timedelta(days=10)
 
-
     # Authorize an http object with our stored credentials
     credentials = ServiceAccountCredentials.from_json_keyfile_dict(
         settings.ANALYTICS_CONFIG,
@@ -82,7 +81,6 @@ def get_analytics(top=10):
         query_options['filters'] = filters
         query = analytics.data().ga().get(**query_options)
         results = query.execute()
-
         for entry in results['rows']:
                 # see `METRICS` for entry format
             page_path = entry[PAGE_URL]
@@ -116,6 +114,8 @@ def get_analytics(top=10):
     for idx, article in enumerate(articles):
         print '\t{}. {}, {}'.format(idx + 1,
                                     article[0].title.encode('utf-8'), article[1])
+
+    print(articles)
 
     if len(articles) == top:
         GET_ANALYTICS_CACHE = articles
