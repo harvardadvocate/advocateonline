@@ -72,7 +72,7 @@ def homepage_redesign_jack(request):
   CURRENT_ISSUE = "Summer 2018"
 
   for issue in Issue.objects.all():
-    if issue == CURRENT_ISSUE:
+    if str(issue) == CURRENT_ISSUE:
       break
 
   data['issue_name'] = issue
