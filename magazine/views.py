@@ -69,7 +69,12 @@ def homepage_redesign_jack(request):
   data = {}
 
   # current_issue
-  issue = Issue.objects.last()
+  CURRENT_ISSUE = "Summer 2018"
+
+  for issue in Issue.objects.all():
+    if issue == CURRENT_ISSUE:
+      break
+
   data['issue_name'] = issue
   data['issue_cover_image'] = issue.cover_image
   data['issue_url'] = issue.get_absolute_url()
