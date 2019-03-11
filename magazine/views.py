@@ -5,7 +5,6 @@ from django.http import HttpResponse, JsonResponse
 from .models import Article, Content, Image, Issue, Contributor, ShopItem # '.' signifies the current directory
 import django.db.models as models
 from .forms import UploadShopItemForm
-from .get_top import get_analytics
 from blog.models import Post, Author
 from collections import OrderedDict
 from itertools import chain
@@ -67,23 +66,27 @@ def index(request):
 
 def homepage_redesign_jack(request):
   data = {}
-
+  print("MADDY")
   # current_issue
   issue = Issue.objects.last()
+  print("AFter MADDY")
   data['issue_name'] = issue
   data['issue_cover_image'] = issue.cover_image
   data['issue_url'] = issue.get_absolute_url()
   # ads
   data['ads'] = getAds('home')
-
+  print("AFter MADDY 1")
   all_articles = Article.objects.published()
   articles_in_issue = all_articles.filter(issue=issue)
+  print("AFter MADDY 2")
   art_in_issue = Image.objects.published().filter(issue=issue)
-
+  print("AFter MADDY 3")
   # from the blog
   posts = Post.objects.all()
+  print("AFter MADDY 4")
+  print(posts)
   recent_blog = list(reversed(sorted(posts, key=lambda i: i.created)))[:2 ]
-
+  print("AFter MADDY 5")
   # most_read (from Google Analytics)
   most_read_list = []
   most_read = []
@@ -91,35 +94,43 @@ def homepage_redesign_jack(request):
     article, _ = item
     most_read.append(article)
   data['most_read'] = most_read
-
+  print("AFter MADDY 6")
   # editors_picks (randomly generated)
   editors_picks = []
   editors_picks_article_indicies = random.sample(range(0, len(all_articles) - 1), 5)
   for index in editors_picks_article_indicies:
     editors_picks.append(all_articles[index])
   data['editors_picks'] = editors_picks
-
+  print("AFter MADDY 7")
   # feature_1 - Any
   data['feature_1'] = articles_in_issue[1]
-
+  print("AFter MADDY 9")
   # feature_2 - Blog
   data['feature_2'] = articles_in_issue[2]
+  print("AFter MADDY 10")
+  print(art_in_issue)
+  print(len(art_in_issue))
   # feature_3 - Art
-  data['feature_3'] = art_in_issue[0]
+  data['feature_3'] = articles_in_issue[2]
+  print("AFter MADDY 11")
   # feature_4 - Any
   data['feature_4'] = articles_in_issue[3]
+  print("AFter MADDY 12")
 
   # feature_5 - Any
   data['feature_5'] = recent_blog[0]
+  print("AFter MADDY 13")
 
   # feature_6 - Any
   data['feature_6'] = all_articles[7]
+  print("AFter MADDY 14")
   # feature_7 - Any
   data['feature_7'] = all_articles[15]
   # feature_8 - Any
-
+  print("AFter MADDY 15")
 
   template_name = 'homepage_redesign_jack.html'
+  print("ending maddy")
   return render(request, template_name, data)
 
 
