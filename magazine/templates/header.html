@@ -30,10 +30,10 @@
 
               <ul class="search-form-links list-unstyled">
                 <li>
-                  <a class="no-decoration top-line" href="/submit">Submit</a>
-                   <a class="no-decoration top-line" href="/subscribe">Subscribe</a>
-                   <a class="no-decoration top-line" href="/shop">Shop</a>
-                  <a class="no-decoration top-line" href="/financialaid">Donate</a>
+                  <a class="no-decoration top-line" href="{% url 'submit' %}">Submit</a>
+                   <a class="no-decoration top-line" href="{% url 'subscribe' %}">Subscribe</a>
+                   <a class="no-decoration top-line" href="{% url 'shop' %}">Shop</a>
+                  <a class="no-decoration top-line" href="{% url 'financial_aid' %}">Donate</a>
                 </li>
               </ul>
            </div>
@@ -59,14 +59,14 @@
     <div class="collapse navbar-collapse navbar-ex1-collapse ">
       <div class="nav-header"> </div>
         <ul class="nav navbar-nav">
-            <li ><a href="{% url 'shop'%}">ABOUT</a></li>
-            <li ><a href="/issues">ISSUES</a></li>
-            <li ><a href="/art">ART</a></li>
-            <li ><a href="/fiction">FICTION</a></li>
-            <li ><a href="/features">FEATURES</a></li>
-            <li ><a href="/poetry">POETRY</a></li>
-            <li ><a href="/columns">COLUMNS</a></li>
-            <li> <a href="/blog" >BLOG</a></li>
+            <li ><a href="{% url 'about'%}">ABOUT</a></li>
+            <li ><a href="{% url 'issues'%}">ISSUES</a></li>
+            <li ><a href="{% url 'art'%}">ART</a></li>
+            <li ><a href="{% url 'fiction'%}">FICTION</a></li>
+            <li ><a href="{% url 'features'%}">FEATURES</a></li>
+            <li ><a href="{% url 'poetry'%}">POETRY</a></li>
+            <li ><a href="{% url 'columns'%}">COLUMNS</a></li>
+            <li> <a href="{% url 'blog_home'%}" >BLOG</a></li>
         </ul>
 
     </div><!-- /.navbar-collapse -->

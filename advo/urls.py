@@ -21,15 +21,21 @@ class MediaRedirectView(RedirectView):
 urlpatterns = [
     # Examples:
     url(r'^$', magazine.views.homepage_redesign_jack, name="index"),
-    url(r'^issues$', magazine.views.issues),
+    url(r'^issues$', magazine.views.issues, name="issues"),
     url(r'^about$', magazine.views.masthead, name="about"),
     url(r'^issue/(?P<season>[a-zA-Z]+)-(?P<year>[\d]{4})/$', magazine.views.singleissue, name='issue'),
-    url(r'^subscribe$', payments.views.subscribe),
-    url(r'^submit$', magazine.views.submit),
-    url(r'^contact$', magazine.views.contact),
-    url(r'^alumni$', magazine.views.alumni),
-    url(r"^fiction/$|^poetry/$|^art/$|^features/$|^columns/$|^notes/$|^interviews/$", magazine.views.sections),
-    url(r'^advertise$', magazine.views.advertise),
+    url(r'^subscribe$', payments.views.subscribe, name="subscribe"),
+    url(r'^submit$', magazine.views.submit, name="submit"),
+    url(r'^contact$', magazine.views.contact, name="contact"),
+    url(r'^alumni$', magazine.views.alumni, name="alumni"),
+    url(r"^fiction/$", magazine.views.sections, name="fiction"),
+    url(r"^poetry/$", magazine.views.sections, name="poetry"),
+    url(r"^art/$", magazine.views.sections, name="art"),
+    url(r"^features/$", magazine.views.sections, name="features"),
+    url(r"^columns/$", magazine.views.sections, name="columns"),
+    url(r"^notes/$", magazine.views.sections, name="notes"),
+    url(r"^interviews/$", magazine.views.sections, name="interviews"),
+    url(r'^advertise$', magazine.views.advertise, name="advertise"),
     url(r'^adSubmit$', magazine.views.adSubmit),
     url(r'^150th$', magazine.views.onefifty),
     url(r'^shop$', magazine.views.shop, name='shop'),
@@ -39,10 +45,10 @@ urlpatterns = [
     url(r'^shop-upload$', magazine.views.shop_upload),
     url(r'^shop-delete$', magazine.views.shop_delete),
     url(r'^benefit$', magazine.views.gala),
-    url(r'^financialaid$', magazine.views.financialaid),
-    url(r'^comp$', magazine.views.comp),
+    url(r'^financialaid$', magazine.views.financialaid, name="financial_aid"),
+    url(r'^comp$', magazine.views.comp, name="comp"),
     url(r'^article/(?P<id>[\d]+)/(?P<slug>[a-zA-Z\d_\-]+)/$', magazine.views.content_piece),
-    url(r'^content/(?P<slug>[a-zA-Z\d_\-]+)/$', magazine.views.content_piece),
+    url(r'^content/(?P<slug>[a-zA-Z\d_\-]+)/$', magazine.views.content_piece, name="content"),
     url(r'^contributor/(?P<author_id>[\d]+)/(?P<name>.*)/$', magazine.views.contributor_page),
     # url(r'^blog/', include('blog.urls')),
     #url(r'^mce_filebrowser/', include('mce_filebrowser.urls')),
@@ -69,7 +75,7 @@ urlpatterns = [
     url(r'^tech$', magazine.views.tech),
     url(r'^favicon\.ico$', favicon_view),
 
-    url(r'^explore_archives', magazine.views.explore_archives)
+    url(r'^explore_archives', magazine.views.explore_archives, name="explore_archives")
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

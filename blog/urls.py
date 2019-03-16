@@ -9,7 +9,7 @@ admin.autodiscover()
 
 urlpatterns = [
     # Examples:
-    url(r'^$', blog.views.main),
+    url(r'^$', blog.views.main, name="blog_home"),
     url(r'^post/(?P<slug>[a-zA-Z\d_\-]+)/$', blog.views.post),
     # url(r'^theme', 'blog.views.theme'),
     url(r'^tag/(?P<slug>[a-zA-Z\d_\-]+)/$', blog.views.tag_page),

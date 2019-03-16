@@ -17,14 +17,14 @@ Featured {{ section }}
   </ul>
   {% for article in featured_articles %}
   <div class="item featured-item {% if forloop.first %} selected {% endif %}" data-item-id="{{ article.id }}">
-      <span class="item-title"><a href="/content/{{ article.id }}">{{ article.title }}</a></span>
+      <span class="item-title"><a href="{% url 'content' article.id %}">{{ article.title }}</a></span>
       <span class="item-author">By {% for author in article.contributors.all %}
              <a href="{{ author.get_absolute_url }}">{{ author.name }}</a>
         {% endfor %}</span>
       <span class="title-underline"></span>
-      <div class="item-sample">{% if article.photo %}<a href="/content/{{ article.id }}"><img src="{{ MEDIA_URL }}{{article.photo}}" /></a>{% else %}{% autoescape off %}{{ article.body }}{% endautoescape %}{% endif %}</div>
+      <div class="item-sample">{% if article.photo %}<a href="{% url 'content' article.id %}"><img src="{{ MEDIA_URL }}{{article.photo}}" /></a>{% else %}{% autoescape off %}{{ article.body }}{% endautoescape %}{% endif %}</div>
       <div class="shadow"></div>
-      <div class="item-continue-reading"><a href="/content/{{ article.id }}">{% if section == "art" %} See More >> {% else %} Continue Reading >> {% endif %}</a></div>
+      <div class="item-continue-reading"><a href="{% url 'content' article.id %}">{% if section == "art" %} See More >> {% else %} Continue Reading >> {% endif %}</a></div>
     </div>
   {% endfor %}
 </div>
@@ -37,7 +37,7 @@ Featured {{ section }}
     {% for ad in ads %}
     <div class="col-md-4">
       <article>
-      <a href = "/advertise" class = "sponsored-link"> Sponsored </a>
+      <a href = "{% url 'advertise'%}" class = "sponsored-link"> Sponsored </a>
         <figure class="resize-image" style="margin:auto;">
           <!--pass in art image link HERE-->
           <a href = "{{ ad.url }}"> <img src=" {{ ad.image.url }}" class = "img-responsive" alt="Main Image" > </a>

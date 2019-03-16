@@ -321,7 +321,7 @@ def stripeSubmit(request):
 
 def sections(request):
   section = request.path
-  section = section.replace("/","")
+  section = section.split('/')[-2]
 
   # For all issues
   all_issues = query_all_issues_sorted()
