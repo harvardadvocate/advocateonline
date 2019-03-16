@@ -74,9 +74,7 @@ def homepage_redesign_jack(request):
     if str(issue) == CURRENT_ISSUE:
       break
       
-  data['issue_name'] = issue
-  data['issue_cover_image'] = issue.cover_image
-  data['issue_url'] = issue.get_absolute_url()
+  data['issue'] = issue
   # ads
   data['ads'] = getAds('home')
   all_articles = Article.objects.published()
@@ -99,6 +97,7 @@ def homepage_redesign_jack(request):
     editors_picks.append(all_articles[index])
   data['editors_picks'] = editors_picks
   # feature_1 - Any
+  print(dir(articles_in_issue[1]))
   data['feature_1'] = articles_in_issue[1]
   # feature_2 - Blog
   data['feature_2'] = articles_in_issue[2]

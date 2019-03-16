@@ -4,7 +4,7 @@
 
 <div class="homepage">
   <section class="top-features">
-    <a href='{{ feature_1.get_absolute_url }}'>
+    <a href='{% url "article" feature_1.id feature_1.slug %}'>
       <div class="container-left-half" id="feature-1">
         <div class="category-rule">
           <h4 class="category-label">Featured</h4>
@@ -22,7 +22,7 @@
         </div>
         <span class="feature-author">
             {% for author in feature_1.contributors.all %}
-              <a href="{{ author.get_absolute_url }}" class="no-decoration">{{ author.name }}</a>
+              <a href="{% url 'contributor' author.id author.name %}" class="no-decoration">{{ author.name }}</a>
             {% empty %}
               <h3 class="subheader-article-author"> No Author </h3> 
             {% endfor %}
@@ -32,7 +32,7 @@
     </a>
 
     <div class="container-right-half">
-      <a href="{{ feature_2.get_absolute_url }}">
+      <a href='{% url "article" feature_2.id feature_2.slug %}'>
         <div class="container-left-quarter" id="feature-2">
           <div class="category-rule">
             <h4 class="category-label">{{ feature_2.section }}</h4>
@@ -45,7 +45,7 @@
           </div>
           <div class="feature-author">
               {% for author in feature_2.contributors.all %}
-                <a href="{{ author.get_absolute_url }}">{{ author.name }}</a>
+                <a href="{% url 'contributor' author.id author.name %}">{{ author.name }}</a>
               {% empty %}
                 <h3 class="subheader-article-author"> No Author </h3> 
               {% endfor %}
@@ -53,7 +53,7 @@
           <div class="feature-release-date-small">{{ feature_2.publishDate |date:"M d Y" }}</div>
         </div>
       </a>
-      <a href="{{ feature_3.get_absolute_url }}">
+      <a href='{% url "article" feature_3.id feature_3.slug %}'>
         <div class="container-right-quarter" id="feature-3">
           <div class="category-rule">
             <h4 class="category-label">{{ feature_3.section }}</h4>
@@ -68,7 +68,7 @@
           </div>
           <div class="feature-author">
               {% for author in feature_3.contributors.all %}
-                <a href="{{ author.get_absolute_url }}">{{ author.name }}</a>
+                <a href="{% url 'contributor' author.id author.name %}">{{ author.name }}</a>
               {% empty %}
                 <h3 class="subheader-article-author"> No Author </h3> 
               {% endfor %}            
@@ -78,7 +78,7 @@
       </a>
       <div class="clearfix"></div>
 
-    <a href='{{ feature_4.get_absolute_url }}'> 
+    <a href='{% url "article" feature_4.id feature_4.slug %}'> 
       <div class="container-left-quarter" id="feature-4">
           <div class="category-rule">
               <h4 class="category-label">{{ feature_4.section }}</h4>
@@ -91,7 +91,7 @@
             </div>
             <div class="feature-author">
                 {% for author in feature_4.contributors.all %}
-                  <a href="{{ author.get_absolute_url }}">{{ author.name }}</a>
+                  <a href="{% url 'contributor' author.id author.name %}">{{ author.name }}</a>
                 {% empty %}
                   <h3 class="subheader-article-author"> No Author </h3> 
                 {% endfor %}
@@ -99,7 +99,7 @@
             <div class="feature-release-date-small">{{ feature_4.publishDate |date:"M d Y" }}</div>
       </div>
     </a>
-    <a href="{{ feature_5.get_absolute_url }}">
+    <a href='{% url "article" feature_5.id feature_5.slug %}'>
       <div class="container-right-quarter" id="feature-5">
         <div class="category-rule">
           <h4 class="category-label">Blog</h4>
@@ -111,7 +111,7 @@
           {{ feature_5.body | striptags | truncatewords:13}}
           <div class="feature-author">
             {% for author in feature_5.authors.all %}
-              <a href="{{ author.get_absolute_url }}">{{ author.name }}<br></a>
+              <a href="{% url 'contributor' author.id author.name %}">{{ author.name }}<br></a>
             {% empty %}
               <h3 class="subheader-article-author"> No Author </h3> 
             {% endfor %}
@@ -145,21 +145,21 @@
           <h4 class="category-label">Current Issue</h4>
         </div>
         <div class="current-issue-label">
-          <a href="{{ issue_url }}">{{ issue_name }}</a>
+          <a href='{% url "issue" issue.issue issue.year %}'>{{ issue.name }}</a>
         </div>
-        <a href="{{ issue_url }}">
+        <a href='{% url "issue" issue.issue issue.year %}'>
           <div class="feature-image-container-current-issue">
             <div class="feature-image" id="feature-current-issue-image">
-                <img style="width: 100%;" src="{{ MEDIA_URL }}{{ issue_cover_image }}">
+                <img style="width: 100%;" src="{{ MEDIA_URL }}{{ issue.cover_image }}">
             </div>
           </div>
         </a>
         <div class="current-issue-shop">
-          <a href="/shop">See Shop</a>
+          <a href="{% url 'shop' %}">See Shop</a>
         </div>
       </div>
 
-      <a href="{{ feature_7.get_absolute_url }}">
+      <a href='{% url "article" feature_7.id feature_7.slug %}'>
           <div class="container-left-quarter" id="feature-7">
             <div class="category-rule">
               <h4 class="category-label">{{ feature_7.section }}</h4>
@@ -171,7 +171,7 @@
               {{ feature_7.body | safe | truncatewords:8}}
               <div class="feature-author">
                 {% for author in feature_7.contributors.all %}
-                  <a href="{{ author.get_absolute_url }}">{{ author.name }}<br></a>
+                  <a href="{% url 'contributor' author.id author.name %}">{{ author.name }}<br></a>
                 {% empty %}
                   <h3 class="subheader-article-author"> No Author </h3> 
                 {% endfor %}
@@ -181,7 +181,7 @@
           </div>
         </a>
 
-      <a href="{{ feature_6.get_absolute_url }}">
+      <a href='{% url "article" feature_6.id feature_6.slug %}'>
           <div class="container-right-quarter" id="feature-6">
             <div class="category-rule">
               <h4 class="category-label">{{ feature_6.section }}</h4>
@@ -193,7 +193,7 @@
               {{ feature_6.body | safe | truncatewords:13}}
               <div class="feature-author">
                 {% for author in feature_6.contributors.all %}
-                  <a href="{{ author.get_absolute_url }}">{{ author.name }}<br></a>
+                  <a href="{% url 'contributor' author.id author.name %}">{{ author.name }}<br></a>
                 {% empty %}
                   <h3 class="subheader-article-author"> No Author </h3> 
                 {% endfor %}
@@ -216,11 +216,11 @@
           {% for article in most_read %}
             <li class="feature-list-item">
               <div class="feature-list-item-title">
-                <a href="{{ article.get_absolute_url }}">{{ article.title }}</a>
+                <a href='{% url "article" article.id article.slug %}'>{{ article.title }}</a>
               </div>
               <div class="feature-list-item-author">
                 {% for author in article.contributors.all %}
-                  <a href="{{ author.get_absolute_url }}"><span>{{ author.name }}</span></a>
+                  <a href="{% url 'contributor' author.id author.name %}"><span>{{ author.name }}</span></a>
                 {% empty %}
                   <span>No author</span>
                 {% endfor %}
@@ -239,11 +239,11 @@
           {% for article in editors_picks %}
             <li class="feature-list-item">
               <div class="feature-list-item-title">
-                <a href="{{ article.get_absolute_url }}">{{ article.title }}</a>
+                <a href='{% url "article" article.id article.slug %}'>{{ article.title }}</a>
               </div>
               <div class="feature-list-item-author">
                 {% for author in article.contributors.all %}
-                  <a href="{{ author.get_absolute_url }}"><span>{{ author.name }}</span></a>
+                  <a href="{% url 'contributor' author.id author.name %}"><span>{{ author.name }}</span></a>
                 {% empty %}
                   <span>No author</span>
                 {% endfor %}
