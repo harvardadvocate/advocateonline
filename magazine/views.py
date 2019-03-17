@@ -97,12 +97,11 @@ def homepage_redesign_jack(request):
     editors_picks.append(all_articles[index])
   data['editors_picks'] = editors_picks
   # feature_1 - Any
-  print(dir(articles_in_issue[1]))
   data['feature_1'] = articles_in_issue[1]
   # feature_2 - Blog
   data['feature_2'] = articles_in_issue[2]
   # feature_3 - Art
-  data['feature_3'] = articles_in_issue[2]
+  data['feature_3'] = art_in_issue[0]
   # feature_4 - Any
   data['feature_4'] = articles_in_issue[3]
 
