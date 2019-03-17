@@ -17,10 +17,10 @@
   </div>
   <div style="clear: both;"></div>
   <br>
-   <a href="/cart" style="float:right;">
+   <a href="{% url 'cart' %}" style="float:right;">
       <button type="button" class="btn btn-primary-outline" style="width: 200px; clear: both;">Go to Cart</button>
   </a>
-   <a href="/shop" style="float:right; margin-right: 5%;">
+   <a href="{% url 'shop' %}" style="float:right; margin-right: 5%;">
       <button type="button" class="btn btn-primary-outline" style="width: 200px; clear: both;">Return to Shop</button>
   </a>
 
@@ -57,7 +57,7 @@
         //alert(this.getAttribute('data-shopitem-id'));
         var itemTitle = this.parentElement.getElementsByClassName('hidden-title')[0].innerHTML;
         var itemId = this.getAttribute('data-shopitem-id');
-        var jqxhr = $.post( "/cart", {'action': 'insert', 'itemId': itemId, 'csrfmiddlewaretoken': "{% csrf_token %}".split("value='")[1].split("'")[0]} , function(a) {
+        var jqxhr = $.post( "{% url 'cart' %}", {'action': 'insert', 'itemId': itemId, 'csrfmiddlewaretoken': "{% csrf_token %}".split("value='")[1].split("'")[0]} , function(a) {
           //alert( a );
           console.log(a);
         })

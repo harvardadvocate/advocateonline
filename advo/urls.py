@@ -40,7 +40,7 @@ urlpatterns = [
     url(r'^150th$', magazine.views.onefifty),
     url(r'^shop$', magazine.views.shop, name='shop'),
     url(r'^shop/(?P<id>\d+)$', magazine.views.shopItemView, name="shop-item"),
-    url(r'^cart$', magazine.views.cart),
+    url(r'^cart$', magazine.views.cart, name='cart'),
     url(r'^shop-admin$', magazine.views.shop_admin),
     url(r'^shop-upload$', magazine.views.shop_upload),
     url(r'^shop-delete$', magazine.views.shop_delete),
@@ -56,7 +56,7 @@ urlpatterns = [
     url(r'^blog/', include('blog.urls')),
     url(r'^shopSubmit$',payments.views.shopSubmit),
     url(r'^grappelli/', include('grappelli.urls')),
-    url(r'^admin/', include(admin.site.urls)),
+    url(r'^admin/', include(admin.site.urls), name="admin"),
     url(r'^admin/lookups/', include(ajax_select_urls)),
     url(r'^tinymce/', include('tinymce.urls')),
 
