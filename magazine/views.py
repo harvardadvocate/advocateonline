@@ -16,7 +16,7 @@ import re
 from django.core.exceptions import ObjectDoesNotExist
 from django.core.exceptions import MultipleObjectsReturned
 from advertisement.helper import getAds
-
+from get_top import get_analytics
 from haystack.query import SearchQuerySet
 from haystack.views import SearchView
 from haystack.forms import SearchForm
@@ -84,7 +84,7 @@ def homepage_redesign_jack(request):
   posts = Post.objects.all()
   recent_blog = list(reversed(sorted(posts, key=lambda i: i.created)))[:2 ]
   # most_read (from Google Analytics)
-  most_read_list = []
+  most_read_list = get_analytics(top=5)
   most_read = []
   for item in most_read_list:
     article, _ = item
