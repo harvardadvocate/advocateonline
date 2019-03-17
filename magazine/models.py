@@ -5,6 +5,7 @@ from django.db import models
 from django.db.models import Q, ImageField
 from django.utils.text import slugify
 from django.utils.encoding import smart_unicode, smart_str
+from django.urls import reverse
 from tinymce import models as tinymce_models
 from bs4 import BeautifulSoup
 import re
@@ -52,7 +53,7 @@ class Issue(models.Model):
         return self.name
 
     def get_absolute_url(self):
-        return '/issue/{0}-{1}/'.format(self.issue.lower(), self.year)
+        return reverse('issue', args=[self.issue.lower(), self.year])
 
 class Section(models.Model):
     name = models.CharField(max_length=255, unique=True)
@@ -68,9 +69,7 @@ class Contributor(models.Model):
     def slug(self):
       return self.name.replace(" ", "_")
     def get_absolute_url(self):
-     # Can't use .format because name is not always
-     return '/contributor/' +  str(self.id) + '/' +  self.slug()
-     # return '/contributor/{0}/{1}'.format(self.id, self.slug())
+     return reverse('contributor', args=[self.id, self.name])
 
 
 
@@ -115,7 +114,7 @@ class Content(models.Model):
         return self.title
 
     def get_absolute_url(self):
-        return '/content/{0}/'.format(self.id)
+        return reverse('content', args[self.id])
 
     def description(self):
         txt = ' '.join(BeautifulSoup(self.teaser).findAll(text=True))
@@ -125,7 +124,7 @@ class Article(Content):
     objects = ContentManager()
     photo = VersatileImageField(upload_to=upload_image_to, blank=True, null=True)
     def get_absolute_url(self):
-        return '/article/{0}/{1}'.format(self.id, self.slug.lower())
+        return reverse('article', args=[self.id, self.slug.lower()])
 
 class Image(Content):
     objects = ContentManager()
