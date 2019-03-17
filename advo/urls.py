@@ -8,7 +8,7 @@ from ajax_select import urls as ajax_select_urls
 import magazine.views, payments.views, django.views.static
 from django.views.generic.base import RedirectView
 
-favicon_view = RedirectView.as_view(url='/static/magazine/images/favicon.ico', permanent=True)
+favicon_view = RedirectView.as_view(url=settings.MEDIA_URL+'/static/magazine/images/favicon.ico', permanent=True)
 
 admin.autodiscover()
 
