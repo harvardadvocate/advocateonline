@@ -12,7 +12,7 @@
 		{% endif %}
  		<div class="col-xs-6 col-sm-3 col-md-3 col-lg-3">
  			<h2 class="subheader" style="font-size:16px;">{{ item.titel }}</h2>
-            <figure><a href="/shop/{{item.id}}"><img class='img-responsive' style="margin: 0 auto;" src="/media/{{item.image}}" alt="shopItem"></a></figure>
+            <figure><a href="{% url 'shop-item' item.id %}"><img class='img-responsive' style="margin: 0 auto;" src="{{ MEDIA_URL }}{{item.image}}" alt="shopItem"></a></figure>
             <p>${{item.price}}</p>
             <p class="add-to-cart" data-shopitem-id="{{item.id}}">Add to Cart</p>
  		</div>

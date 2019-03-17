@@ -14,10 +14,10 @@
 			<!-- How to check if image exists:
 			http://stackoverflow.com/questions/6637168/python-django-templates-and-testing-if-a-variable-is-null-or-empty-string?rq=1
 			http://stackoverflow.com/questions/12507281/determine-empty-template-variable-in-django -->
-			{% if issue.cover_image and issue.cover_image|length > 0 %}
-			<figure><a href="{{issue.get_absolute_url}}" class="no-decoration"><img class='img-responsive' style="margin: 0 auto;" src="{{ issue.cover_image.url }}"></a></figure>
+			{% if issue.cover_image %}
+			<figure><a href='{% url "issue" issue.issue issue.year %}' class="no-decoration"><img class='img-responsive' style="margin: 0 auto;" src="{{ issue.cover_image.url }}"></a></figure>
 			{% else %}
-			<figure><a href="{{issue.get_absolute_url}}"><img class='img-responsive' style="margin: 0 auto;" src="{{MEDIA_URL}}image-not-available.jpg"></a></figure>
+			<figure><a href='{% url "issue" issue.issue issue.year %}'><img class='img-responsive' style="margin: 0 auto;" src="{{MEDIA_URL}}image-not-available.jpg"></a></figure>
 			{% endif %}
  		</div>
  		{% if forloop.counter|divisibleby:4 %}

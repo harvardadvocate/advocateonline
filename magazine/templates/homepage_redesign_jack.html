@@ -128,7 +128,7 @@
       {% if ads %} {% for ad in ads %}
       <div class="col-md-4">
           <article>
-              <a href="/advertise" class="sponsored-link"> Sponsored </a>
+              <a href="{% url 'advertise' %}" class="sponsored-link"> Sponsored </a>
               <figure class="resize-image" style="margin:auto;">
                   <!--pass in art image link HERE-->
                   <a href="{{ ad.url }}"> <img src=" {{ ad.image.url }}" class="img-responsive" alt="Main Image"> </a>

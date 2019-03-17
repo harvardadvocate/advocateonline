@@ -39,7 +39,7 @@ urlpatterns = [
     url(r'^adSubmit$', magazine.views.adSubmit),
     url(r'^150th$', magazine.views.onefifty),
     url(r'^shop$', magazine.views.shop, name='shop'),
-    url(r'^shop/(?P<id>\d+)$', magazine.views.shopItemView),
+    url(r'^shop/(?P<id>\d+)$', magazine.views.shopItemView, name="shop-item"),
     url(r'^cart$', magazine.views.cart),
     url(r'^shop-admin$', magazine.views.shop_admin),
     url(r'^shop-upload$', magazine.views.shop_upload),
