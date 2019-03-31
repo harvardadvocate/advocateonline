@@ -1175,7 +1175,7 @@ main {
 .homepage #feature-2,
 .homepage #feature-3,
 .homepage #feature-4,
-.homepage #feature- 5,
+.homepage #feature-5,
 .homepage #feature-6,
 .homepage #feature-7 {
   height: 250px;
@@ -1237,15 +1237,6 @@ main {
   margin: 15px 13px
 }
 
-.homepage .feature-title-small {
-  font-family: Georgia;
-  font-weight: bold;
-  font-size: 19px;
-  line-height: 22px;
-  letter-spacing: -0.5px;
-  margin: 10px 13px;
-}
-
 .homepage .feature-description-large {
   font-family: Georgia;
   font-weight: normal;
@@ -1278,20 +1269,11 @@ main {
 }
 
 .homepage .feature-image {
-  border: 1px rgb(175,175,175) solid;
+  box-shadow: 0 0 10px #000;
   height: 100%;
   width: 100%;
 	background-size: cover;
 	overflow: hidden;
-}
-
-.homepage .feature-author {
-  font-family: Georgia;
-  font-size: 14px;
-  line-height: 20px;
-  margin-top: 15px;
-  margin-left: 13px;
-  text-align: left;
 }
 
 .homepage .feature-release-date {
@@ -1344,6 +1326,24 @@ main {
   font-family: Arial, sans-serif;
 }
 
+.homepage .feature-title-small {
+  font-family: Georgia;
+  font-weight: bold;
+  font-size: 19px;
+  line-height: 22px;
+  letter-spacing: -0.5px;
+  margin: 10px 13px;
+}
+
+.homepage .feature-author {
+  font-family: Georgia;
+  font-size: 14px;
+  line-height: 20px;
+  margin-top: 15px;
+  margin-left: 13px;
+  text-align: left;
+}
+
 .homepage .homepage-list {
   padding: 2px 0 0 0;
   margin: 0;
@@ -1387,7 +1387,79 @@ main {
   margin-left: 7px;
 }
 
+.homepage .random-thumbnail {
+	width: 100%;
+	overflow: hidden;
+}
 
+.homepage .random_thumbnail_wrapper {
+  font-family: Georgia;
+  font-weight: normal;
+  font-size: 14px;
+  margin: 10px 13px;
+  margin-bottom: 10px;
+	color: rgba(255,255,255,1);
+	position: relative;
+	text-shadow: 1px 1px 10px rgba(0,0,0,1);
+	box-shadow: 0 0 10px #000;
+}
+
+.random_thumbnail_wrapper:hover div {
+	opacity: 0;
+}
+
+.random_thumbnail_wrapper:hover .feature-description-small {
+	opacity: 1;
+}
+
+.random_thumbnail_wrapper div {
+	opacity: 1;
+	transition: opacity .25s ease-in-out;
+	-moz-transition: opacity .25s ease-in-out;
+	-webkit-transition: opacity .25s ease-in-out;
+}
+
+.random_thumbnail_wrapper .feature-description-small {
+	opacity: 0;
+	position: absolute;
+	top: 8px;
+	left: 8px;
+	transition: opacity .25s ease-in-out;
+	-moz-transition: opacity .25s ease-in-out;
+	-webkit-transition: opacity .25s ease-in-out;
+	color: rgba(255,255,255,1);
+	overflow: hidden;
+}
+
+.homepage .random_thumbnail_wrapper .feature-title-small {
+  font-family: Georgia;
+  font-weight: bold;
+  font-size: 19px;
+  line-height: 22px;
+  letter-spacing: -0.5px;
+	margin: 10px 13px;
+	position: absolute;
+  top: 8px;
+	left: 8px;
+	color: rgba(255,255,255,1);
+}
+
+.homepage .random_thumbnail_wrapper .feature-author {
+  font-family: Georgia;
+  font-size: 14px;
+  line-height: 20px;
+  margin-top: 15px;
+  margin-left: 13px;
+	text-align: left;
+	position: absolute;
+  bottom: 8px;
+	left: 8px;
+	color: rgba(255,255,255,1);
+}
+
+.homepage .random_thumbnail_wrapper .feature-author a {
+	color: inherit;
+}
 /* Responsive Styling */
 
 @media (max-width: 900px) {
@@ -1397,13 +1469,13 @@ main {
   }
 
   .homepage #feature-1 {
-    height: 100%;
+		height: 100%;
   }
 
   .homepage #feature-2,
   .homepage #feature-3,
   .homepage #feature-4,
-  .homepage #feature- 5,
+  .homepage #feature-5,
   .homepage #feature-6,
   .homepage #feature-7 {
     height: 200px;
