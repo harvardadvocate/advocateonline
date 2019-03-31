@@ -14,3 +14,6 @@ media/
 .elasticbeanstalk/*
 !.elasticbeanstalk/*.cfg.yml
 !.elasticbeanstalk/*.global.yml
+.vscode/
+zappa_settings.json
+zappa*.zip
