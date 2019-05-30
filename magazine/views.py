@@ -68,7 +68,7 @@ def homepage_redesign_jack(request):
   data = {}
 
   # current_issue
-  CURRENT_ISSUE = "Summer 2018"
+  CURRENT_ISSUE = "Spring 2019"
 
   for issue in Issue.objects.all():
     if str(issue) == CURRENT_ISSUE:
@@ -101,7 +101,7 @@ def homepage_redesign_jack(request):
   # feature_2 - Blog
   data['feature_2'] = articles_in_issue[2]
   # feature_3 - Art
-  data['feature_3'] = art_in_issue[0]
+  data['feature_3'] = articles_in_issue[5]
   # feature_4 - Any
   data['feature_4'] = articles_in_issue[3]
 

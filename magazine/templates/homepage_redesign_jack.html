@@ -18,7 +18,7 @@
           {{feature_1.title}}
         </div>
         <div class="feature-description-large">
-          {{feature_1.teaser|safe|truncatewords:47}}
+          {{feature_1.teaser|safe|truncatewords:37}}
         </div>
         <span class="feature-author">
             {% for author in feature_1.contributors.all %}
@@ -41,7 +41,7 @@
               {{feature_2.title}}
           </div>
           <div class="feature-description-small">
-              {{feature_2.teaser| safe | truncatewords:17}}
+              {{feature_2.teaser| safe | striptags | truncatewords:30}}
           </div>
           <div class="feature-author">
               {% for author in feature_2.contributors.all %}
@@ -61,11 +61,9 @@
           <div class="feature-title-small">
             {{ feature_3.title }}
           </div>
-          <div class="feature-image-container-small">
-            <div class="feature-image" id="feature-3-image">
-              <img style="width: 100%;" src="{{ MEDIA_URL }}{{feature_3.photo}}" >
-            </div>
-          </div>
+          <div class="feature-description-small">
+            {{feature_3.teaser| safe | striptags | truncatewords:27}}
+        </div>
           <div class="feature-author">
               {% for author in feature_3.contributors.all %}
                 <a href="{{ author.get_absolute_url }}">{{ author.name }}</a>
@@ -87,7 +85,7 @@
                 {{feature_4.title}}
             </div>
             <div class="feature-description-small">
-                {{feature_4.teaser|safe|truncatewords:9}}
+                {{feature_4.teaser|safe|striptags|truncatewords:30}}
             </div>
             <div class="feature-author">
                 {% for author in feature_4.contributors.all %}
