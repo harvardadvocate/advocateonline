@@ -4,32 +4,32 @@
 
 <div class="homepage">
   <section class="top-features">
-      <a href='{{ feature_1.get_absolute_url }}'>
-          <div class="container-left-half" id="feature-1">
-            <div class="category-rule">
-              <h4 class="category-label">Featured</h4>
-            </div>
-            <div class="feature-image-container-large">
-              <div class="feature-image" id="feature-1-image">
-                  <img style="width: 100%;overflow:hidden;" src="{{ MEDIA_URL }}sites/default/random-images/random-pattern-6.png" >
-              </div>
-            </div>
-            <div class="feature-title-large">
-              {{feature_1.title}}
-            </div>
-            <div class="feature-description-large">
-              {{feature_1.teaser|safe|truncatewords:47}}
-            </div>
-            <span class="feature-author">
-                {% for author in feature_1.contributors.all %}
-                  <a href="{{ author.get_absolute_url }}" class="no-decoration">{{ author.name }}</a>
-                {% empty %}
-                  <h3 class="subheader-article-author"> No Author </h3> 
-                {% endfor %}
-            </span>
-            <div class="feature-release-date">{{ feature_1.publishDate |date:"M d Y" }}</div>
+    <a href='{{ feature_1.get_absolute_url }}'>
+      <div class="container-left-half" id="feature-1">
+        <div class="category-rule">
+          <h4 class="category-label">Featured</h4>
+        </div>
+        <div class="feature-image-container-large">
+          <div class="feature-image" id="feature-1-image">
+              <img style="width: 100%;overflow:hidden;" src="{{ MEDIA_URL }}sites/default/files/building_shot.png" >
           </div>
-        </a>
+        </div>
+        <div class="feature-title-large">
+          {{feature_1.title}}
+        </div>
+        <div class="feature-description-large">
+          {{feature_1.teaser|safe|truncatewords:47}}
+        </div>
+        <span class="feature-author">
+            {% for author in feature_1.contributors.all %}
+              <a href="{{ author.get_absolute_url }}" class="no-decoration">{{ author.name }}</a>
+            {% empty %}
+              <h3 class="subheader-article-author"> No Author </h3> 
+            {% endfor %}
+        </span>
+        <div class="feature-release-date">{{ feature_1.publishDate |date:"M d Y" }}</div>
+      </div>
+    </a>
 
     <div class="container-right-half">
       <a href='{% url "article" feature_2.id feature_2.slug %}'>
@@ -37,21 +37,18 @@
           <div class="category-rule">
             <h4 class="category-label">{{ feature_2.section }}</h4>
           </div>
-          <div class="random_thumbnail_wrapper">
-            <div class="feature-description-small">
-                {{ feature_2.body | safe | truncatewords:13}}
-            </div>
-            <div class="feature-title-small">
-                {{feature_2.title}}
-            </div>
-            <img class="random-thumbnail" src="{{ MEDIA_URL }}sites/default/random-images/random-pattern-4.png" >
-            <div class="feature-author">
-                {% for author in feature_2.contributors.all %}
-                  <a href="{{ author.get_absolute_url }}">{{ author.name }}</a>
-                {% empty %}
-                  <h3 class="subheader-article-author"> No Author </h3> 
-                {% endfor %}
-            </div>
+          <div class="feature-title-small">
+              {{feature_2.title}}
+          </div>
+          <div class="feature-description-small">
+              {{feature_2.teaser| safe | truncatewords:17}}
+          </div>
+          <div class="feature-author">
+              {% for author in feature_2.contributors.all %}
+                <a href="{{ author.get_absolute_url }}">{{ author.name }}</a>
+              {% empty %}
+                <h3 class="subheader-article-author"> No Author </h3> 
+              {% endfor %}
           </div>
           <div class="feature-release-date-small">{{ feature_2.publishDate |date:"M d Y" }}</div>
         </div>
@@ -61,76 +58,68 @@
           <div class="category-rule">
             <h4 class="category-label">{{ feature_3.section }}</h4>
           </div>
-          <div class="random_thumbnail_wrapper">
-              <div class="feature-description-small">
-                  {{ feature_3.body | safe | truncatewords:13}}
-              </div>
-              <div class="feature-title-small">
-                  {{feature_3.title}}
-              </div>
-              <img class="random-thumbnail" src="{{ MEDIA_URL }}sites/default/random-images/random-pattern-5.png" >
-              <div class="feature-author">
-                  {% for author in feature_3.contributors.all %}
-                    <a href="{{ author.get_absolute_url }}">{{ author.name }}</a>
-                  {% empty %}
-                    <h3 class="subheader-article-author"> No Author </h3> 
-                  {% endfor %}
-              </div>
+          <div class="feature-title-small">
+            {{ feature_3.title }}
+          </div>
+          <div class="feature-image-container-small">
+            <div class="feature-image" id="feature-3-image">
+              <img style="width: 100%;" src="{{ MEDIA_URL }}{{feature_3.photo}}" >
             </div>
+          </div>
+          <div class="feature-author">
+              {% for author in feature_3.contributors.all %}
+                <a href="{{ author.get_absolute_url }}">{{ author.name }}</a>
+              {% empty %}
+                <h3 class="subheader-article-author"> No Author </h3> 
+              {% endfor %}            
+          </div>
           <div class="feature-release-date-small">{{ feature_2.publishDate |date:"M d Y"  }}</div>
         </div>
       </a>
       <div class="clearfix"></div>
 
-      <a href='{{ feature_4.get_absolute_url }}'> 
-          <div class="container-left-quarter" id="feature-4">
-              <div class="category-rule">
-                  <h4 class="category-label">{{ feature_4.section }}</h4>
-                </div>
-                <div class="random_thumbnail_wrapper">
-                    <div class="feature-description-small">
-                        {{ feature_4.teaser | safe | truncatewords:13}}
-                    </div>
-                    <div class="feature-title-small">
-                        {{feature_4.title}}
-                    </div>
-                    <img class="random-thumbnail" src="{{ MEDIA_URL }}sites/default/random-images/random-pattern-3.png" >
-                    <div class="feature-author">
-                        {% for author in feature_4.contributors.all %}
-                          <a href="{{ author.get_absolute_url }}">{{ author.name }}</a>
-                        {% empty %}
-                          <h3 class="subheader-article-author"> No Author </h3> 
-                        {% endfor %}
-                    </div>
-                  </div>
-                <div class="feature-release-date-small">{{ feature_4.publishDate |date:"M d Y" }}</div>
-          </div>
-        </a>
-        <a href="{{ feature_5.get_absolute_url }}">
-          <div class="container-right-quarter" id="feature-5">
-            <div class="category-rule">
-              <h4 class="category-label">Blog</h4>
+    <a href='{{ feature_4.get_absolute_url }}'> 
+      <div class="container-left-quarter" id="feature-4">
+          <div class="category-rule">
+              <h4 class="category-label">{{ feature_4.section }}</h4>
             </div>
-            <div class="random_thumbnail_wrapper">
-                <div class="feature-description-small">
-                    {{ feature_5.body | safe | truncatewords:13}}
-                </div>
-                <div class="feature-title-small">
-                    {{feature_5.title}}
-                </div>
-                <img class="random-thumbnail" src="{{ MEDIA_URL }}sites/default/random-images/random-pattern-2.png" >
-                <div class="feature-author">
-                  {% for author in feature_5.authors.all %}
-                    <a href="{{ author.get_absolute_url }}">{{ author.name }}<br></a>
-                  {% empty %}
-                    <h3 class="subheader-article-author"> No Author </h3> 
-                  {% endfor %}
-                </div>
-              </div>
-              <div class="feature-release-date-small">{{ feature_5.created|date:"M d Y" }}</div>
+            <div class="feature-title-small">
+                {{feature_4.title}}
             </div>
+            <div class="feature-description-small">
+                {{feature_4.teaser|safe|truncatewords:9}}
+            </div>
+            <div class="feature-author">
+                {% for author in feature_4.contributors.all %}
+                  <a href="{{ author.get_absolute_url }}">{{ author.name }}</a>
+                {% empty %}
+                  <h3 class="subheader-article-author"> No Author </h3> 
+                {% endfor %}
+            </div>
+            <div class="feature-release-date-small">{{ feature_4.publishDate |date:"M d Y" }}</div>
+      </div>
+    </a>
+    <a href="{{ feature_5.get_absolute_url }}">
+      <div class="container-right-quarter" id="feature-5">
+        <div class="category-rule">
+          <h4 class="category-label">Blog</h4>
+        </div>
+        <div class="feature-title-small">
+          {{feature_5.title}}
+        </div>
+        <div class="feature-description-small">
+          {{ feature_5.body | striptags | truncatewords:13}}
+          <div class="feature-author">
+            {% for author in feature_5.authors.all %}
+              <a href="{{ author.get_absolute_url }}">{{ author.name }}<br></a>
+            {% empty %}
+              <h3 class="subheader-article-author"> No Author </h3> 
+            {% endfor %}
           </div>
-        </a>
+          <div class="feature-release-date-small">{{ feature_5.created|date:"M d Y" }}</div>
+        </div>
+      </div>
+    </a>
   </section>
 
   <div class="clearfix"></div>
