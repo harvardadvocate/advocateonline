@@ -45,7 +45,7 @@ urlpatterns = [
     url(r'^shop-upload$', magazine.views.shop_upload),
     url(r'^shop-delete$', magazine.views.shop_delete),
     url(r'^benefit$', magazine.views.gala),
-    url(r'^financialaid$', magazine.views.financialaid, name="financial_aid"),
+    url(r'^financialaid$', payments.views.donate, name="financial_aid"),
     url(r'^comp$', magazine.views.comp, name="comp"),
     url(r'^article/(?P<id>[\d]+)/(?P<slug>[a-zA-Z\d_\-]+)/$', magazine.views.content_piece, name='article'),
     url(r'^content/(?P<slug>[a-zA-Z\d_\-]+)/$', magazine.views.content_piece, name="content"),
