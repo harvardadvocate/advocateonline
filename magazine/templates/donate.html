@@ -32,27 +32,8 @@
     Thank you for your support!
     <br>
         
-    <div style="margin: 40px auto 0px auto; background: #eee; max-width: 400px; padding: 20px;">
-        
-        <div class="form-container active">
-            <form action="/sendDonation" method="post" id="payment-form"> {% csrf_token %} 
-                <h3 class="signup-subheading">Donation Amount</h3>
-                <div class="form-group">
-                    <label class="sr-only" for="amount">Amount (in dollars)</label>
-                    <div class="input-group">
-                        <div class="input-group-addon">$</div>
-                        <input type="text" class="form-control" id="amount" name="amount" placeholder="Amount">
-                        <div class="input-group-addon">.00</div>
-                    </div>
-                </div>
-                <label class="control-label" for "comment">Do you have any comments about this donation?</label>
-                <textarea class="form-control" name="comment" rows="3" placeholder="(Optional)"></textarea>
-                <h3 class="signup-subheading">Who should we thank?</h3>
-                
-                {% include 'payment_form.html' %}
-
-            </form>
-        </div>
+    <div style="margin: 40px auto 0px auto; background: #ffffff; max-width: 400px; padding: 20px;">
+      <script src="https://donorbox.org/widget.js" paypalExpress="false"></script><iframe src="https://donorbox.org/embed/harvardadvocate?amount=30" height="685px" width="100%" style="max-width:500px; min-width:310px; max-height:none!important" seamless="seamless" name="donorbox" frameborder="0" scrolling="no" allowpaymentrequest></iframe>
     </div>
     <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
     <script type="text/javascript">
