@@ -4,99 +4,162 @@
 {% block content %}
 <div class="container">
          <h1 class="header">SHOP</h1>
+         <p class = "text">Welcome to <i>The Harvard Advocate</i>'s Store. Below you can find back issues that you may purchase. To purchase other issues, contact <a href = "mailto:president@theharvardadvocate.com">president@theharvardadvocate.com</a>.</p>
+         <br>
+    <div id='collection-component-10f12d11207'></div>
+    <script type="text/javascript">
+    /*<![CDATA[*/
 
-         <p class = "text">Welcome to <i>The Harvard Advocate</i>'s Store. Below you can find back issues that you may purchase. All issues are $10 (U.S. shipping $2; international shipping $5) unless otherwise indicated. To purchase other issues, contact <a href = "mailto:president@theharvardadvocate.com">president@theharvardadvocate.com</a>.</p>
-		{% for item in items %}
-		{% if forloop.counter0|divisibleby:4 %}
-			<div class="row">
-		{% endif %}
- 		<div class="col-xs-6 col-sm-3 col-md-3 col-lg-3">
- 			<h2 class="subheader" style="font-size:16px;">{{ item.titel }}</h2>
-            <figure><a href="{% url 'shop-item' item.id %}"><img class='img-responsive' style="margin: 0 auto;" src="{{ MEDIA_URL }}{{item.image}}" alt="shopItem"></a></figure>
-            <p>${{item.price}}</p>
-            <p class="add-to-cart" data-shopitem-id="{{item.id}}">Add to Cart</p>
- 		</div>
- 		{% if forloop.counter|divisibleby:4 %}
-			</div>
-		{% endif %}
-
- 	{% endfor %}
- 	</div>
-
-</div>
-
-     <div style="width: 200px; margin: auto;">
-         <a href="/cart">
-            <button type="button" class="btn btn-primary-outline" style="width: 200px; clear: both;">Go to Cart</button>
-        </a>
-    </div>
-
-  {% include 'stripeJS.html' %}
-<script src="{% static 'magazine/js/right-height.js' %}"></script>
-<script src="{% static 'magazine/js/notify.min.js' %}"></script>
-<script>
-    rightHeight.init();
-</script>
-
-<style>
-.shopItem {
-    display: inline;
-    float: left;
-    margin-right: 5px;
-    margin-left: 5px;
-}
-.add-to-cart {
-    border: 1px solid white;
-}
-.add-to-cart:hover {
-    border: 1px solid black;
-    cursor: pointer;
-}
-.shopItem img {
-    margin: auto;
-    max-width: 200px;
-    max-height: 400px;
-}
-</style>
-
-<script type="text/javascript">
-    function subtractQty(elID){
-        if(document.getElementById(elID).value - 1 < 0) {
-            return;
+    (function () {
+      var scriptURL = 'https://sdks.shopifycdn.com/buy-button/latest/buy-button-storefront.min.js';
+      if (window.ShopifyBuy) {
+        if (window.ShopifyBuy.UI) {
+          ShopifyBuyInit();
         } else {
-            document.getElementById(elID).value--;
+          loadScript();
         }
+      } else {
+        loadScript();
+      }
 
+      function loadScript() {
+        var script = document.createElement('script');
+        script.async = true;
+        script.src = scriptURL;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(script);
+        script.onload = ShopifyBuyInit;
+      }
+
+      function ShopifyBuyInit() {
+        var client = ShopifyBuy.buildClient({
+          domain: 'the-harvard-advocate.myshopify.com',
+          storefrontAccessToken: 'c352e31888e06717ad665e51df596558',
+        });
+
+        ShopifyBuy.UI.onReady(client).then(function (ui) {
+          ui.createComponent('collection', {
+            id: 71491354679,
+            node: document.getElementById('collection-component-10f12d11207'),
+            moneyFormat: '%24%7B%7Bamount%7D%7D',
+            options: {
+  "product": {
+    "variantId": "all",
+    "contents": {
+      "imgWithCarousel": false,
+      "variantTitle": false,
+      "description": false,
+      "buttonWithQuantity": false,
+      "quantity": false
+    },
+    "styles": {
+      "product": {
+        "@media (min-width: 601px)": {
+          "max-width": "calc(25% - 20px)",
+          "margin-left": "20px",
+          "margin-bottom": "50px"
+        },
+        "imgWrapper": {
+          "position": "relative",
+          "height": "0",
+          "padding-top": "calc(75% + 15px)"
+        },
+        "img": {
+          "height": "calc(100% - 15px)",
+          "position": "absolute",
+          "left": "0",
+          "right": "0",
+          "top": "0"
+        }
+      },
+      "button": {
+        "background-color": "#030303",
+        ":hover": {
+          "background-color": "#050505"
+        },
+        "border-radius": "0px",
+        ":focus": {
+          "background-color": "#050505"
+        }
+      }
     }
-
-    function addQty(elID) {
-        document.getElementById(elID).value++
+  },
+  "cart": {
+    "contents": {
+      "button": true
+    },
+    "styles": {
+      "button": {
+        "background-color": "#030303",
+        ":hover": {
+          "background-color": "#050505"
+        },
+        "border-radius": "0px",
+        ":focus": {
+          "background-color": "#050505"
+        }
+      },
+      "footer": {
+        "background-color": "#ffffff"
+      }
     }
-    $('.add-to-cart').on('click', function(){
-        //alert(this.getAttribute('data-shopitem-id'));
-        var itemTitle = this.parentElement.getElementsByClassName('hidden-title')[0].innerHTML;
-
-        var itemId = this.getAttribute('data-shopitem-id');
-        var jqxhr = $.post( "cart", {'action': 'insert', 'itemId': itemId, 'csrfmiddlewaretoken': "{% csrf_token %}".split("value='")[1].split("'")[0]} , function(a) {
-          //alert( a );
-          console.log(a);
-        })
-          .done(function(a) {
-            var response = JSON.parse(a);
-            if (response['code'] == 0){
-                $.notify("Item '" + itemTitle + "' added to cart.", "success");
-            }
-            else if (response['code'] == 1) {
-                $.notify(response['responseText'], "info");
-            }
-            else {
-                $.notify(response['responseText'], "error");
-            }
-          })
-          .fail(function() {
-            alert( "error" );
-          })
-    })
-
-</script>
+  },
+  "modalProduct": {
+    "contents": {
+      "img": false,
+      "imgWithCarousel": true,
+      "variantTitle": false,
+      "buttonWithQuantity": true,
+      "button": false,
+      "quantity": false
+    },
+    "styles": {
+      "product": {
+        "@media (min-width: 601px)": {
+          "max-width": "100%",
+          "margin-left": "0px",
+          "margin-bottom": "0px"
+        }
+      },
+      "button": {
+        "background-color": "#030303",
+        ":hover": {
+          "background-color": "#050505"
+        },
+        "border-radius": "0px",
+        ":focus": {
+          "background-color": "#050505"
+        }
+      }
+    }
+  },
+  "toggle": {
+    "styles": {
+      "toggle": {
+        "background-color": "#030303",
+        ":hover": {
+          "background-color": "#050505"
+        },
+        ":focus": {
+          "background-color": "#050505"
+        }
+      }
+    }
+  },
+  "productSet": {
+    "styles": {
+      "products": {
+        "@media (min-width: 601px)": {
+          "margin-left": "-20px"
+        }
+      }
+    }
+  }
+}
+          });
+        });
+      }
+    })();
+    /*]]>*/
+    </script>
+</div>
 {% endblock %}
