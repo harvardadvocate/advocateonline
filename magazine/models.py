@@ -10,7 +10,7 @@ from tinymce import models as tinymce_models
 from bs4 import BeautifulSoup
 import re
 from versatileimagefield.fields import VersatileImageField
-
+from redactor.fields import RedactorField
 
 
 def now():
@@ -98,7 +98,13 @@ class Content(models.Model):
     subtitle = models.CharField(max_length=255, blank=True)
     slug = models.SlugField(max_length=100, unique=True)
     teaser = tinymce_models.HTMLField(blank=True)
-    body = tinymce_models.HTMLField(blank=True)
+    body = RedactorField(
+        verbose_name=u'Text',
+        redactor_options={'lang': 'en', 'focus': 'true'},
+        upload_to='tmp/',
+        allow_file_upload=True,
+        allow_image_upload=True
+    )
 
     # Legacy fields; we should probably get rid of this eventually
     medium = tinymce_models.HTMLField(blank=True)
