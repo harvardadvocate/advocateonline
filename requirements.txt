@@ -8,7 +8,7 @@ cffi==1.11.5
 chardet==3.0.4
 cryptography==2.4.2
 dj-stripe==1.2.3
-Django==1.11.18
+Django==1.11.23
 django-adminfiles==1.0.1
 django-ajax-selects==1.7.1
 django-appconf==1.0.2
